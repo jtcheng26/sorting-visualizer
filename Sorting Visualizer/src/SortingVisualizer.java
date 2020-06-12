@@ -112,28 +112,32 @@ public class SortingVisualizer {
 		finish();
 		return sorted;
 	}
+	public Bar[] doBubbleSort() {
+		Bar[] sorted = bubbleSort(this.bars);
+		finish();
+		return sorted;
+	}
+
+	public Bar[] doSelectionSort() {
+		Bar[] sorted = selectionSort(this.bars);
+		finish();
+		return sorted;
+	}
+	public Bar[] doMergeSort() {
+		Bar[] sorted = mergeSort(this.bars);
+		finish();
+		return sorted;
+	}
+	public Bar[] doQuickSort() {
+		Bar[] sorted = quickSort(this.bars);
+		finish();
+		return sorted;
+	}
 	public void resetSort() {
 		secondsDelay(2);
 		clearBars();
 	}
 	//optional public methods to add delays between sorts
-	public void delay(int fps) {
-		double firstTime = 0.0;
-		double nextTime = System.nanoTime() / 1000000000.0;
-		double skippedTime = 0.0;
-		double elapsedTime = 0.0;
-		boolean running = true;
-		while(running) {
-			firstTime = System.nanoTime() / 1000000000.0;
-			elapsedTime = firstTime - nextTime;
-			nextTime = firstTime;
-			skippedTime += elapsedTime;
-			if (skippedTime >= 1.0 / (double) fps) {
-				running = false;
-			}
-		}
-		
-	}
 	public void secondsDelay(int seconds) {
 		double firstTime = 0.0;
 		double nextTime = System.nanoTime() / 1000000000.0;
@@ -351,9 +355,9 @@ public class SortingVisualizer {
 	//1) Initialize an instance of SortingVisualizer with the number of frames per second as the parameter.
 	//2) Make either an array of Bar objects or an array of integers using the makeRandomBars, makeRandomInts, or your own method of choice.
 	//3) OPTIONAL: Call setBars on the SortingVisualizer with the array as the parameter.
-	//5) Call the sort method with either no parameters (if you did step 3) or the array as the parameter.
-	//6) OPTIONAL: Call resetSort to do a different sort.
-	//7) OPTIONAL: Call delay or secondsDelay methods to increase the time between sorts.
+	//4) Call the sort method with either no parameters (if you did step 3) or the array as the parameter.
+	//5) OPTIONAL: Call resetSort to do a different sort.
+	//6) OPTIONAL: Call delay or secondsDelay methods to increase the time between sorts.
 	//Happy Sorting!
 	public static void driver() {
 		SortingVisualizer visual = new SortingVisualizer(100);
